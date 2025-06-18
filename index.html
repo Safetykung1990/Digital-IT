@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio ของฉัน - นายธุวะชิต ไชยโย</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS (นำมาจากที่คุณให้มา) */
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Prompt', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            color: var(--dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+        }
+
+        .card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card i {
+            transition: all 0.4s ease;
+        }
+
+        .card:hover i {
+            transform: scale(1.2) rotate(5deg);
+            color: var(--accent);
+        }
+
+        .navbar {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .brand {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            gap: 1.5rem;
+        }
+
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-links li a.active {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .hamburger span {
+            height: 3px;
+            width: 25px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 5px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dashboard-item {
+            animation: fadeIn 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .dashboard-item:nth-child(1) { animation-delay: 0.1s; }
+        .dashboard-item:nth-child(2) { animation-delay: 0.2s; }
+        .dashboard-item:nth-child(3) { animation-delay: 0.3s; }
+        .dashboard-item:nth-child(4) { animation-delay: 0.4s; }
+        .dashboard-item:nth-child(5) { animation-delay: 0.5s; }
+        .dashboard-item:nth-child(6) { animation-delay: 0.6s; }
+        .dashboard-item:nth-child(7) { animation-delay: 0.7s; }
+        .dashboard-item:nth-child(8) { animation-delay: 0.8s; }
+
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.05) 50%, transparent 70%);
+            animation: rotate 30s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: #e2e8f0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            transition: width 1s ease-in-out;
+        }
+
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(59, 130, 246, 0.2);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media(max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+                flex-direction: column;
+                width: 70%;
+                height: 100vh;
+                padding: 5rem 2rem 2rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            #menu-toggle:checked ~ .nav-links {
+                right: 0;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            #menu-toggle:checked ~ .hamburger span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            #menu-toggle:checked ~ .hamburger span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            #menu-toggle:checked ~ .hamburger span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <nav class="navbar">
+        <a href="index.html" class="brand">
+            <i class="fas fa-code text-white"></i>
+            Dashboard
+        </a>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">หน้าหลัก</a></li>
+            <li><a href="about.html">ประวัติส่วนตัว</a></li>
+            <li><a href="skills.html">ทักษะ</a></li>
+            <li><a href="portfolio.html">ผลงาน</a></li>
+            <li><a href="contact.html">ติดต่อ</a></li>
+        </ul>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="hero-section text-center py-20 relative">
+            <h1 class="text-5xl font-bold mb-4 text-gray-800">Dashboard</h1>            
+            <p class="text-xl text-gray-600 mb-8">นายธุวะชิต ไชยโย</p>           
+        </section> 
+
+               <section class="my-12">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <a href="about.html" class="dashboard-item card glass rounded-2xl p-6 text-center hover:bg-white">
+                    <i class="fas fa-user text-4xl text-blue-500 mb-4"></i>
+                    <p class="font-semibold">ประวัติส่วนตัว</p>
+                    <p class="text-sm text-gray-600 mt-2">ข้อมูลเกี่ยวกับตัวฉัน</p>
+                </a>
+                
+                <a href="skills.html" class="dashboard-item card glass rounded-2xl p-6 text-center hover:bg-white">
+                    <i class="fas fa-code text-4xl text-purple-500 mb-4"></i>
+                    <p class="font-semibold">hosxp_pcu, query, server, it suport</p>
+                    <p class="text-sm text-gray-600 mt-2">รวมคู่มือการใช้งานโปรแกรม,คำสั่งคิวรี่อื่นๆ</p>
+                </a>
+                
+                <a href="portfolio.html" class="dashboard-item card glass rounded-2xl p-6 text-center hover:bg-white">
+                    <i class="fas fa-briefcase text-4xl text-emerald-500 mb-4"></i>
+                    <p class="font-semibold">แจ้งซ่อมบำรุง</p>
+                    <p class="text-sm text-gray-600 mt-2">แจ้งซ่อมบำรุงอุปกรณ์,คอมพิวเตอร์,เครื่องพิมพ์,เครื่องถ่ายเอกสาร,อื่นๆ</p>
+                </a>
+                
+                <a href="education.html" class="dashboard-item card glass rounded-2xl p-6 text-center hover:bg-white">
+                    <i class="fas fa-graduation-cap text-4xl text-amber-500 mb-4"></i>
+                    <p class="font-semibold">การศึกษา</p>
+                    <p class="text-sm text-gray-600 mt-2">ประวัติการศึกษาและการอบรม</p>
+                </a>
+                
+                <a href="experience.html" class="dashboard-item card glass rounded-2xl p-6 text-center hover:bg-white">
+                    <i class="fas fa-history text-4xl text-rose-500 mb-4"></i>
+                    <p class="font-semibold">ประสบการณ์</p>
+                    <p class="text-sm text-gray-600 mt-2">ประวัติการทำงาน</p>
+                </a>
+                
+                <a href="certificates.html" class="dashboard-item card glass rounded-2xl p-6 text-center hover:bg-white">
+                    <i class="fas fa-certificate text-4xl text-cyan-500 mb-4"></i>
+                    <p class="font-semibold">ใบรับรอง</p>
+                    <p class="text-sm text-gray-600 mt-2">ใบรับรองและประกาศนียบัตร</p>
+                </a>
+                
+                <a href="blog.html" class="dashboard-item card glass rounded-2xl p-6 text-center hover:bg-white">
+                    <i class="fas fa-blog text-4xl text-indigo-500 mb-4"></i>
+                    <p class="font-semibold">ดาวโหลด</p>
+                    <p class="text-sm text-gray-600 mt-2">รวมดาวโหลดโปรแกรมใช้งาน,windows,server,office,all progam,อื่นๆ,</p>
+                </a>
+                
+                <a href="contact.html" class="dashboard-item card glass rounded-2xl p-6 text-center hover:bg-white">
+                    <i class="fas fa-envelope text-4xl text-orange-500 mb-4"></i>
+                    <p class="font-semibold">ติดต่อ</p>
+                    <p class="text-sm text-gray-600 mt-2">ข้อมูลการติดต่อ</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="my-12">
+            <h2 class="text-3xl font-bold text-center mb-8">ผลงานล่าสุด</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card glass rounded-2xl overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center">
+                        <i class="fas fa-laptop-code text-5xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">เว็บไซต์ Portfolio</h3>
+                        <p class="text-gray-600 text-sm mb-4">การออกแบบและพัฒนาเว็บไซต์ Portfolio ส่วนตัว</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">HTML</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">CSS</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card glass rounded-2xl overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center">
+                        <i class="fas fa-mobile-alt text-5xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">แอปพลิเคชันจัดการงาน</h3>
+                        <p class="text-gray-600 text-sm mb-4">แอปพลิเคชันจัดการงานและตารางเวลา</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">React</span>
+                            <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Firebase</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card glass rounded-2xl overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-emerald-400 to-teal-500 flex items-center justify-center">
+                        <i class="fas fa-store text-5xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">ระบบร้านค้าออนไลน์</h3>
+                        <p class="text-gray-600 text-sm mb-4">ระบบจัดการร้านค้าออนไลน์ครบวงจร</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full">PHP</span>
+                            <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full">MySQL</span>
+                            <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full">Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="portfolio.html" class="inline-block px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-full hover:shadow-lg transition-all transform hover:-translate-y-1">
+                    ดูผลงานทั้งหมด <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white py-10 mt-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-4">เกี่ยวกับ Portfolio</h3>
+                <p class="text-gray-400 text-sm">
+                    เว็บไซต์ Portfolio นี้สร้างขึ้นเพื่อนำเสนอประวัติส่วนตัว, ทักษะ, ผลงาน, และประสบการณ์ของฉัน.
+                    คุณสามารถสำรวจส่วนต่างๆ เพื่อเรียนรู้เพิ่มเติมเกี่ยวกับฉันได้.
+                </p>
+            </div>
+            
+            <div>
+                <h3 class="text-xl font-bold mb-4">เมนูลัด</h3>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">หน้าหลัก</a></li>
+                    <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">ประวัติส่วนตัว</a></li>
+                    <li><a href="skills.html" class="text-gray-400 hover:text-white transition-colors">ทักษะ</a></li>
+                    <li><a href="portfolio.html" class="text-gray-400 hover:text-white transition-colors">ผลงาน</a></li>
+                    <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">ติดต่อ</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="text-xl font-bold mb-4">ติดต่อ</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-start space-x-3">
+                        <i class="fas fa-map-marker-alt text-gray-400 mt-1"></i>
+                        <span class="text-gray-400">กรุงเทพมหานคร, ประเทศไทย</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <i class="fas fa-envelope text-gray-400 mt-1"></i>
+                        <span class="text-gray-400">contact@example.com</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <i class="fas fa-phone text-gray-400 mt-1"></i>
+                        <span class="text-gray-400">+66 12 345 6789</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500">
+            <p>&copy; 2023 นายธุวะชิต ไชยโย. สงวนลิขสิทธิ์ทั้งหมด.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Preloader script
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500); // Fades out in 0.5s
+            }
+        });
+
+        // Navbar toggle for mobile
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+
+            if (menuToggle && navLinks && hamburger) {
+                hamburger.addEventListener('click', () => {
+                    menuToggle.checked = !menuToggle.checked;
+                });
+
+                // Close nav menu when a link is clicked (for mobile)
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (window.innerWidth <= 768) {
+                            menuToggle.checked = false;
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
