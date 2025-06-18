@@ -1,73 +1,104 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <title>Digital IT Hub – โรงพยาบาลส่งเสริมสุขภาพเทศบาลร้อยเอ็ด</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light text-dark">
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Digital IT Hub</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="#">หน้าแรก</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">เกี่ยวกับฉัน</a></li>
-          <li class="nav-item"><a class="nav-link" href="#portfolio">ผลงาน</a></li>
-          <li class="nav-item"><a class="nav-link" href="support.html">แจ้งซ่อม</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">ติดต่อ</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f8ff;
+    }
 
-  <!-- Home -->
-  <header class="bg-primary text-white text-center py-5">
-    <div class="container">
-      <h1 class="display-4">Thuwachit Chaiyo</h1>
-      <p class="lead">ผู้ช่วยนักวิชาการคอมพิวเตอร์ – โรงพยาบาลส่งเสริมสุขภาพเทศบาลร้อยเอ็ด</p>
-    </div>
+    header {
+      background-color: #007BFF;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+      padding: 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 20px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      background-color: #e6f0ff;
+    }
+
+    .card i {
+      font-size: 36px;
+      color: #007BFF;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      margin: 0;
+      font-weight: bold;
+      color: #333;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Portfolio Dashboard</h1>
+    <p>by [ชื่อของคุณ]</p>
   </header>
 
-  <!-- About -->
-  <section id="about" class="py-5">
-    <div class="container">
-      <h2>เกี่ยวกับฉัน</h2>
-      <p>ชื่อ: นายธุวะชิต ไชยโย<br>ตำแหน่ง: ผู้ช่วยนักวิชาการคอมพิวเตอร์</p>
-      <ul>
-        <li>ดูแล IT Support – ซ่อมอุปกรณ์, เครื่องพิมพ์</li>
-        <li>ระบบ HOSxP PCU – แก้ไขบั๊ก, สร้าง Dashboard</li>
-        <li>ดูแล Server – Backup, Monitor, ความปลอดภัย</li>
-      </ul>
+  <div class="dashboard">
+    <div class="card">
+      <i class="fas fa-user"></i>
+      <p>ประวัติส่วนตัว</p>
     </div>
-  </section>
-
-  <!-- Portfolio -->
-  <section id="portfolio" class="py-5 bg-light">
-    <div class="container">
-      <h2>ผลงาน / โครงการ</h2>
-      <ul>
-        <li>Dashboard ตรวจสอบสิทธิรักษา (PHP + MySQL)</li>
-        <li>ระบบ Backup ฐานข้อมูล HOSxP PCU อัตโนมัติ</li>
-        <li>Web App ฟอร์มแจ้งซ่อมภายใน</li>
-      </ul>
+    <div class="card">
+      <i class="fas fa-code"></i>
+      <p>ทักษะ</p>
     </div>
-  </section>
-
-
-  <!-- Contact -->
-  <section id="contact" class="py-5">
-    <div class="container">
-      <h2>ติดต่อ</h2>
-      <p>โทร: 088-572-9680<br>Line: @it-support<br>Email: safetykung.com</p>
+    <div class="card">
+      <i class="fas fa-briefcase"></i>
+      <p>ผลงาน</p>
     </div>
-  </section>
+    <div class="card">
+      <i class="fas fa-graduation-cap"></i>
+      <p>การศึกษา</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-envelope"></i>
+      <p>ติดต่อ</p>
+    </div>
+  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <footer>
+    &copy; 2025 [ชื่อของคุณ]. All rights reserved.
+  </footer>
+
 </body>
 </html>
