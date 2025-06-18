@@ -68,11 +68,106 @@
   </style>
 </head>
 <body>
+  <!-- วางไว้ทันทีหลัง <body> เปิด -->
+<div id="preloader">
+  <div class="spinner"></div>
+</div>
+
+<style>
+  #preloader {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #f0f8ff;
+    display: flex; justify-content: center; align-items: center;
+    z-index: 9999;
+  }
+  .spinner {
+    width: 50px; height: 50px;
+    border: 5px solid #ddd;
+    border-top: 5px solid #007BFF;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+</style>
+
+<script>
+  window.addEventListener('load', function() {
+    document.getElementById('preloader').style.display = 'none';
+  });
+</script>
+<header>
+  <nav class="navbar">
+    <a href="index.html" class="brand">Dashboard</a>
+    <input type="checkbox" id="menu-toggle"/>
+    <label for="menu-toggle" class="hamburger">
+      <span></span><span></span><span></span>
+    </label>
+    <ul class="nav-links">
+      <li><a href="about.html">ประวัติส่วนตัว</a></li>
+      <li><a href="skills.html">ทักษะ</a></li>
+      <li><a href="portfolio.html">ผลงาน</a></li>
+      <li><a href="education.html">การศึกษา</a></li>
+      <li><a href="contact.html">ติดต่อ</a></li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .navbar {
+    background-color: #007BFF; padding: 10px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; z-index: 1000;
+  }
+  .navbar .brand {
+    color: white; font-size: 1.3em;
+    text-decoration: none; font-weight: bold;
+  }
+  .nav-links {
+    list-style: none; display: flex; margin: 0; padding: 0;
+  }
+  .nav-links li {
+    margin-left: 20px;
+  }
+  .nav-links a {
+    color: white; text-decoration: none; font-size: 1em;
+  }
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive */
+  #menu-toggle { display: none; }
+  .hamburger {
+    display: none; flex-direction: column;
+    cursor: pointer; padding: 10px;
+  }
+  .hamburger span {
+    height: 3px; width: 25px; background: white;
+    margin: 4px 0; transition: 0.3s;
+  }
+
+  @media(max-width: 768px) {
+    .nav-links { 
+      position: absolute; top: 60px; right: 0;
+      background: #007BFF; flex-direction: column;
+      width: 200px; display: none;
+    }
+    .nav-links li { margin: 10px 0; }
+    #menu-toggle:checked + .hamburger + .nav-links {
+      display: flex;
+    }
+    .hamburger { display: flex; }
+  }
+</style>
+
 
   <header>
     <h1>Dashboard</h1>
     <p>by นายธุวะชิต ไชยโย</p>
   </header>
+
 
   <div class="dashboard">
     <a href="about.html" class="card">
