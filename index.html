@@ -3,24 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - นายธุวะชิต ไชยโย</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Portfolio ของฉัน - นายธุวะชิต ไชยโย</title>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Custom CSS (นำมาจากที่คุณให้มา) */
         :root {
-            --primary: #667eea;
-            --primary-dark: #5a67d8;
-            --secondary: #f093fb;
-            --accent: #f093fb;
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-            --dark: #1a202c;
-            --light: #f7fafc;
-            --glass: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --dark: #1e293b;
+            --light: #f8fafc;
         }
 
         * {
@@ -30,308 +25,136 @@
         }
 
         body {
-            font-family: 'Prompt', sans-serif;
-            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
+            font-family: 'Prompt', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
             color: var(--dark);
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Floating particles */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
-            50% { transform: translateY(-100px) rotate(180deg); opacity: 1; }
-        }
-
-        /* Enhanced glass effect */
         .glass {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
         }
 
-        .glass::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), transparent, rgba(255, 255, 255, 0.3));
-            border-radius: inherit;
-            z-index: -1;
-        }
-
-        /* Floating cards */
         .card {
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
             position: relative;
-            transform-style: preserve-3d;
         }
 
         .card:hover {
-            transform: translateY(-20px) rotateX(5deg) rotateY(5deg);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            z-index: 10;
         }
 
-        /* Animated border */
-        .card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: inherit;
-            padding: 2px;
-            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: exclude;
-            -webkit-mask-composite: destination-out;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .card:hover::after {
-            opacity: 1;
-        }
-
-        /* Enhanced navbar */
-        .navbar {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .navbar .brand {
-            color: white;
-            font-size: 1.8rem;
-            text-decoration: none;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-links li a::before {
+        .card::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: 0.3s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
         }
 
-        .nav-links li a:hover::before {
+        .card:hover::before {
             left: 100%;
         }
 
-        .nav-links li a:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Hero section */
-        .hero-section {
-            padding: 120px 2rem 80px;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            color: white;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 3rem;
-            opacity: 0.8;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Stats with pulsing effect */
-        .stats-section {
-            padding: 4rem 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .stat-card {
+        .card i {
             transition: all 0.4s ease;
-            animation: pulse 2s ease-in-out infinite alternate;
         }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
-            100% { box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
+        .card:hover i {
+            transform: scale(1.2) rotate(5deg);
+            color: var(--accent);
         }
 
-        .stat-card:hover {
-            transform: scale(1.1) rotate(2deg);
-        }
-
-        /* Enhanced progress bars */
-        .progress-bar {
-            height: 12px;
-            border-radius: 25px;
-            background: rgba(255, 255, 255, 0.2);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .progress-bar-fill {
-            height: 100%;
-            border-radius: 25px;
-            background: linear-gradient(90deg, #667eea, #f093fb);
-            position: relative;
-            overflow: hidden;
-            animation: shimmer 2s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200px 0; }
-            100% { background-position: calc(200px + 100%) 0; }
-        }
-
-        .progress-bar-fill::after {
-            content: '';
-            position: absolute;
+        .navbar {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
             top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            background-image: linear-gradient(
-                -45deg,
-                rgba(255, 255, 255, 0.2) 25%,
-                transparent 25%,
-                transparent 50%,
-                rgba(255, 255, 255, 0.2) 50%,
-                rgba(255, 255, 255, 0.2) 75%,
-                transparent 75%,
-                transparent
-            );
-            background-size: 50px 50px;
-            animation: move 2s linear infinite;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
-        @keyframes move {
-            0% { background-position: 0 0; }
-            100% { background-position: 50px 50px; }
+        .navbar .brand {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        /* Dashboard with 3D effect */
-        .dashboard-section {
-            padding: 4rem 2rem;
-            position: relative;
-            z-index: 2;
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            gap: 1.5rem;
         }
 
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-links li a.active {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .hamburger span {
+            height: 3px;
+            width: 25px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 5px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .dashboard-item {
-            text-decoration: none;
-            color: white;
-            animation: fadeInUp 0.8s ease forwards;
+            animation: fadeIn 0.6s ease forwards;
             opacity: 0;
-            transform: perspective(1000px) rotateX(45deg);
-            transform-origin: bottom;
         }
 
         .dashboard-item:nth-child(1) { animation-delay: 0.1s; }
@@ -343,132 +166,58 @@
         .dashboard-item:nth-child(7) { animation-delay: 0.7s; }
         .dashboard-item:nth-child(8) { animation-delay: 0.8s; }
 
-        .dashboard-card {
-            padding: 2rem;
-            text-align: center;
-            border-radius: 20px;
+        .hero-section {
             position: relative;
             overflow: hidden;
         }
 
-        .dashboard-card i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            transition: all 0.4s ease;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-        }
-
-        .dashboard-item:hover i {
-            transform: scale(1.3) rotateY(360deg);
-        }
-
-        /* Portfolio cards with hover effects */
-        .portfolio-section {
-            padding: 4rem 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 2rem auto 0;
-        }
-
-        .portfolio-card {
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.6s ease;
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-15px) scale(1.05);
-        }
-
-        .portfolio-image {
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .portfolio-image::before {
+        .hero-section::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(0,0,0,0.1), rgba(255,255,255,0.1));
-            opacity: 0;
-            transition: 0.3s;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.05) 50%, transparent 70%);
+            animation: rotate 30s linear infinite;
+            z-index: -1;
         }
 
-        .portfolio-card:hover .portfolio-image::before {
-            opacity: 1;
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
-        .portfolio-image i {
-            font-size: 4rem;
-            color: white;
-            z-index: 1;
-            position: relative;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
-        }
-
-        /* Enhanced footer */
-        .footer {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(20px);
-            color: white;
-            padding: 3rem 2rem 2rem;
-            margin-top: 4rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
+        .stat-card {
             transition: all 0.3s ease;
         }
 
-        .footer-section a:hover {
-            color: white;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        .stat-card:hover {
+            transform: translateY(-5px);
         }
 
-        /* Loading animation */
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: #e2e8f0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            transition: width 1s ease-in-out;
+        }
+
         #preloader {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
-            background-size: 400% 400%;
-            animation: gradientShift 3s ease infinite;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -476,562 +225,275 @@
         }
 
         .spinner {
-            width: 80px;
-            height: 80px;
-            border: 4px solid rgba(255, 255, 255, 0.2);
-            border-top: 4px solid white;
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(59, 130, 246, 0.2);
+            border-top: 4px solid var(--primary);
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
         }
 
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
 
-        /* Button with glow effect */
-        .glow-button {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .glow-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
-            filter: brightness(1.1);
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .dashboard-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 1rem;
-            }
-            
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            
+        @media(max-width: 768px) {
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+                flex-direction: column;
+                width: 70%;
+                height: 100vh;
+                padding: 5rem 2rem 2rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            #menu-toggle:checked ~ .nav-links {
+                right: 0;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            #menu-toggle:checked ~ .hamburger span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            #menu-toggle:checked ~ .hamburger span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            #menu-toggle:checked ~ .hamburger span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
             }
         }
     </style>
 </head>
 <body>
-    <!-- Preloader -->
     <div id="preloader">
         <div class="spinner"></div>
     </div>
 
-    <!-- Floating Particles -->
-    <div class="particles" id="particles"></div>
-
-    <!-- Navbar -->
     <nav class="navbar">
-        <a href="#" class="brand">
-            <i class="fas fa-code"></i>
-            ธุวะชิต ไชยโย
+        <a href="index.html" class="brand">
+            <i class="fas fa-code text-white"></i>
+            Portfolio
         </a>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
         <ul class="nav-links">
-            <li><a href="#home">หน้าหลัก</a></li>
-            <li><a href="#about">เกี่ยวกับ</a></li>
-            <li><a href="#skills">ทักษะ</a></li>
-            <li><a href="#portfolio">ผลงาน</a></li>
-            <li><a href="#contact">ติดต่อ</a></li>
+            <li><a href="index.html" class="active">หน้าหลัก</a></li>
+            <li><a href="about.html">ประวัติส่วนตัว</a></li>
+            <li><a href="skills.html">ทักษะ</a></li>
+            <li><a href="portfolio.html">ผลงาน</a></li>
+            <li><a href="contact.html">ติดต่อ</a></li>
         </ul>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section" id="home">
-        <div class="hero-content">
-            <h1 class="hero-title">สวัสดี ฉันคือ ธุวะชิต</h1>
-            <p class="hero-subtitle">Web Developer & UI/UX Designer</p>
-            <p class="hero-description">
-                ฉันเป็นนักพัฒนาเว็บไซต์และนักออกแบบ UI/UX ที่มีความหลงใหลในการสร้างสรรค์เว็บไซต์ที่สวยงามและใช้งานง่าย 
-                ด้วยประสบการณ์กว่า 3 ปี ฉันพร้อมที่จะช่วยทำให้ไอเดียของคุณกลายเป็นจริง
-            </p>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="flex flex-wrap justify-center gap-6 mb-12">
-            <div class="stat-card glass p-6 rounded-2xl w-48 text-center text-white">
-                <div class="text-4xl font-bold mb-2">5+</div>
-                <div class="text-lg opacity-80">โปรเจกต์</div>
-            </div>
-            <div class="stat-card glass p-6 rounded-2xl w-48 text-center text-white">
-                <div class="text-4xl font-bold mb-2">3+</div>
-                <div class="text-lg opacity-80">ปีประสบการณ์</div>
-            </div>
-            <div class="stat-card glass p-6 rounded-2xl w-48 text-center text-white">
-                <div class="text-4xl font-bold mb-2">10+</div>
-                <div class="text-lg opacity-80">ทักษะ</div>
-            </div>
-        </div>
-        
-        <div class="max-w-md mx-auto glass p-8 rounded-3xl text-white">
-            <h3 class="text-2xl font-semibold mb-6 text-center">ทักษะหลัก</h3>
-            <div class="space-y-6">
-                <div>
-                    <div class="flex justify-between mb-2">
-                        <span class="font-medium">HTML/CSS</span>
-                        <span class="font-medium">90%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-bar-fill" style="width: 90%"></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex justify-between mb-2">
-                        <span class="font-medium">JavaScript</span>
-                        <span class="font-medium">85%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-bar-fill" style="width: 85%"></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex justify-between mb-2">
-                        <span class="font-medium">UI/UX Design</span>
-                        <span class="font-medium">75%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-bar-fill" style="width: 75%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dashboard Section -->
-    <section class="dashboard-section">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold text-white mb-4">สำรวจผลงาน</h2>
-            <p class="text-xl text-white opacity-80">ค้นพบความสามารถและประสบการณ์ของฉัน</p>
-        </div>
-        
-        <div class="dashboard-grid">
-            <a href="#about" class="dashboard-item">
-                <div class="dashboard-card card glass">
-                    <i class="fas fa-user" style="color: #4facfe;"></i>
-                    <h3 class="text-xl font-semibold mb-2">ประวัติส่วนตัว</h3>
-                    <p class="opacity-80 mb-4">ระบบจัดการร้านค้าออนไลน์ครบวงจรพร้อมระบบชำระเงินและการจัดการสินค้า</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-white bg-opacity-20 px-3 py-1 rounded-full">PHP</span>
-                        <span class="text-xs bg-white bg-opacity-20 px-3 py-1 rounded-full">MySQL</span>
-                        <span class="text-xs bg-white bg-opacity-20 px-3 py-1 rounded-full">Bootstrap</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="text-center mt-12">
-            <a href="#portfolio" class="glow-button">
-                ดูผลงานทั้งหมด <i class="fas fa-arrow-right"></i>
+    <main class="container mx-auto px-4 py-8">
+        <section class="hero-section text-center py-20 relative">
+            <h1 class="text-5xl font-bold mb-4 text-gray-800">ยินดีต้อนรับสู่ Portfolio ของฉัน</h1>
+            <p class="text-xl text-gray-600 mb-8">นี่คือที่ที่คุณจะได้รู้จักฉันและผลงานของฉัน</p>
+            <a href="about.html" class="inline-block px-8 py-4 bg-gradient-to-r from-primary to-accent text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                เกี่ยวกับฉัน <i class="fas fa-arrow-right ml-2"></i>
             </a>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>เกี่ยวกับ</h3>
-                <p class="opacity-80">
-                    ฉันเป็นนักพัฒนาเว็บไซต์ที่มีความหลงใหลในการสร้างสรรค์ประสบการณ์ผู้ใช้ที่ยอดเยี่ยม
-                    ด้วยการใช้เทคโนโลยีที่ทันสมัยและการออกแบบที่สวยงาม
+               <section class="my-12">
+            <h2 class="text-3xl font-bold text-center mb-8">สำรวจ Portfolio</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <a href="about.html" class="dashboard-item card glass rounded-2xl p-6 text-center hover:bg-white">
+                    <i class="fas fa-user text-4xl text-blue-500 mb-4"></i>
+                    <p class="font-semibold">ประวัติส่วนตัว</p>
+                    <p class="text-sm text-gray-600 mt-2">ข้อมูลเกี่ยวกับตัวฉัน</p>
+                </a>
+                
+                <a href="skills.html" class="dashboard-item card glass rounded-2xl p-6 text-center hover:bg-white">
+                    <i class="fas fa-code text-4xl text-purple-500 mb-4"></i>
+                    <p class="font-semibold">ทักษะ</p>
+                    <p class="text-sm text-gray-600 mt-2">ความสามารถและความเชี่ยวชาญ</p>
+                </a>
+                
+                <a href="portfolio.html" class="dashboard-item card glass rounded-2xl p-6 text-center hover:bg-white">
+                    <i class="fas fa-briefcase text-4xl text-emerald-500 mb-4"></i>
+                    <p class="font-semibold">ผลงาน</p>
+                    <p class="text-sm text-gray-600 mt-2">โปรเจกต์และผลงานที่ผ่านมา</p>
+                </a>
+                
+                <a href="education.html" class="dashboard-item card glass rounded-2xl p-6 text-center hover:bg-white">
+                    <i class="fas fa-graduation-cap text-4xl text-amber-500 mb-4"></i>
+                    <p class="font-semibold">การศึกษา</p>
+                    <p class="text-sm text-gray-600 mt-2">ประวัติการศึกษาและการอบรม</p>
+                </a>
+                
+                <a href="experience.html" class="dashboard-item card glass rounded-2xl p-6 text-center hover:bg-white">
+                    <i class="fas fa-history text-4xl text-rose-500 mb-4"></i>
+                    <p class="font-semibold">ประสบการณ์</p>
+                    <p class="text-sm text-gray-600 mt-2">ประวัติการทำงาน</p>
+                </a>
+                
+                <a href="certificates.html" class="dashboard-item card glass rounded-2xl p-6 text-center hover:bg-white">
+                    <i class="fas fa-certificate text-4xl text-cyan-500 mb-4"></i>
+                    <p class="font-semibold">ใบรับรอง</p>
+                    <p class="text-sm text-gray-600 mt-2">ใบรับรองและประกาศนียบัตร</p>
+                </a>
+                
+                <a href="blog.html" class="dashboard-item card glass rounded-2xl p-6 text-center hover:bg-white">
+                    <i class="fas fa-blog text-4xl text-indigo-500 mb-4"></i>
+                    <p class="font-semibold">บทความ</p>
+                    <p class="text-sm text-gray-600 mt-2">บทความและความคิดเห็น</p>
+                </a>
+                
+                <a href="contact.html" class="dashboard-item card glass rounded-2xl p-6 text-center hover:bg-white">
+                    <i class="fas fa-envelope text-4xl text-orange-500 mb-4"></i>
+                    <p class="font-semibold">ติดต่อ</p>
+                    <p class="text-sm text-gray-600 mt-2">ข้อมูลการติดต่อ</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="my-12">
+            <h2 class="text-3xl font-bold text-center mb-8">ผลงานล่าสุด</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card glass rounded-2xl overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center">
+                        <i class="fas fa-laptop-code text-5xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">เว็บไซต์ Portfolio</h3>
+                        <p class="text-gray-600 text-sm mb-4">การออกแบบและพัฒนาเว็บไซต์ Portfolio ส่วนตัว</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">HTML</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">CSS</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card glass rounded-2xl overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center">
+                        <i class="fas fa-mobile-alt text-5xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">แอปพลิเคชันจัดการงาน</h3>
+                        <p class="text-gray-600 text-sm mb-4">แอปพลิเคชันจัดการงานและตารางเวลา</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">React</span>
+                            <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Firebase</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card glass rounded-2xl overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-emerald-400 to-teal-500 flex items-center justify-center">
+                        <i class="fas fa-store text-5xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">ระบบร้านค้าออนไลน์</h3>
+                        <p class="text-gray-600 text-sm mb-4">ระบบจัดการร้านค้าออนไลน์ครบวงจร</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full">PHP</span>
+                            <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full">MySQL</span>
+                            <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full">Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="portfolio.html" class="inline-block px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-full hover:shadow-lg transition-all transform hover:-translate-y-1">
+                    ดูผลงานทั้งหมด <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white py-10 mt-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-4">เกี่ยวกับ Portfolio</h3>
+                <p class="text-gray-400 text-sm">
+                    เว็บไซต์ Portfolio นี้สร้างขึ้นเพื่อนำเสนอประวัติส่วนตัว, ทักษะ, ผลงาน, และประสบการณ์ของฉัน.
+                    คุณสามารถสำรวจส่วนต่างๆ เพื่อเรียนรู้เพิ่มเติมเกี่ยวกับฉันได้.
                 </p>
             </div>
             
-            <div class="footer-section">
-                <h3>เมนูลัด</h3>
+            <div>
+                <h3 class="text-xl font-bold mb-4">เมนูลัด</h3>
                 <ul class="space-y-2">
-                    <li><a href="#home">หน้าหลัก</a></li>
-                    <li><a href="#about">ประวัติส่วนตัว</a></li>
-                    <li><a href="#skills">ทักษะ</a></li>
-                    <li><a href="#portfolio">ผลงาน</a></li>
-                    <li><a href="#contact">ติดต่อ</a></li>
+                    <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">หน้าหลัก</a></li>
+                    <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">ประวัติส่วนตัว</a></li>
+                    <li><a href="skills.html" class="text-gray-400 hover:text-white transition-colors">ทักษะ</a></li>
+                    <li><a href="portfolio.html" class="text-gray-400 hover:text-white transition-colors">ผลงาน</a></li>
+                    <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">ติดต่อ</a></li>
                 </ul>
             </div>
             
-            <div class="footer-section">
-                <h3>ติดต่อ</h3>
-                <ul class="space-y-3">
-                    <li class="flex items-center gap-3">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>กรุงเทพมหานคร, ประเทศไทย</span>
+            <div>
+                <h3 class="text-xl font-bold mb-4">ติดต่อ</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-start space-x-3">
+                        <i class="fas fa-map-marker-alt text-gray-400 mt-1"></i>
+                        <span class="text-gray-400">กรุงเทพมหานคร, ประเทศไทย</span>
                     </li>
-                    <li class="flex items-center gap-3">
-                        <i class="fas fa-envelope"></i>
-                        <span>contact@example.com</span>
+                    <li class="flex items-start space-x-3">
+                        <i class="fas fa-envelope text-gray-400 mt-1"></i>
+                        <span class="text-gray-400">contact@example.com</span>
                     </li>
-                    <li class="flex items-center gap-3">
-                        <i class="fas fa-phone"></i>
-                        <span>+66 12 345 6789</span>
+                    <li class="flex items-start space-x-3">
+                        <i class="fas fa-phone text-gray-400 mt-1"></i>
+                        <span class="text-gray-400">+66 12 345 6789</span>
                     </li>
                 </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3>ติดตามฉัน</h3>
-                <div class="flex gap-4 mt-4">
-                    <a href="#" class="text-2xl hover:text-blue-400 transition-colors">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="#" class="text-2xl hover:text-pink-400 transition-colors">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="text-2xl hover:text-blue-300 transition-colors">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="text-2xl hover:text-blue-600 transition-colors">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="#" class="text-2xl hover:text-gray-400 transition-colors">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </div>
             </div>
         </div>
         
-        <div class="border-t border-white border-opacity-20 mt-8 pt-6 text-center opacity-60">
+        <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500">
             <p>&copy; 2023 นายธุวะชิต ไชยโย. สงวนลิขสิทธิ์ทั้งหมด.</p>
         </div>
     </footer>
 
     <script>
-        // Preloader
-        window.addEventListener('load', function() {
+        // Preloader script
+        window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
-            preloader.style.opacity = '0';
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500);
+            if (preloader) {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500); // Fades out in 0.5s
+            }
         });
 
-        // Floating particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
+        // Navbar toggle for mobile
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
 
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 6 + 's';
-                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                particlesContainer.appendChild(particle);
-            }
-        }
+            if (menuToggle && navLinks && hamburger) {
+                hamburger.addEventListener('click', () => {
+                    menuToggle.checked = !menuToggle.checked;
+                });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                // Close nav menu when a link is clicked (for mobile)
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (window.innerWidth <= 768) {
+                            menuToggle.checked = false;
+                        }
                     });
-                }
-            });
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        }, observerOptions);
-
-        // Observe dashboard items
-        document.querySelectorAll('.dashboard-item').forEach(item => {
-            observer.observe(item);
-        });
-
-        // Parallax effect for hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
-            const heroSection = document.querySelector('.hero-section');
-            if (heroSection) {
-                heroSection.style.transform = `translateY(${rate}px)`;
+                });
             }
         });
-
-        // Dynamic navbar background
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.15)';
-                navbar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.1)';
-            } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.1)';
-                navbar.style.boxShadow = 'none';
-            }
-        });
-
-        // Initialize particles
-        createParticles();
-
-        // Add hover effect to cards
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.zIndex = '10';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.zIndex = '1';
-            });
-        });
-
-        // Typing effect for hero title
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
-
-        // Initialize typing effect
-        setTimeout(() => {
-            const heroTitle = document.querySelector('.hero-title');
-            if (heroTitle) {
-                const originalText = heroTitle.textContent;
-                typeWriter(heroTitle, originalText, 80);
-            }
-        }, 1000);
-
-        // Progress bar animation
-        function animateProgressBars() {
-            const progressBars = document.querySelectorAll('.progress-bar-fill');
-            progressBars.forEach((bar, index) => {
-                const width = bar.style.width;
-                bar.style.width = '0%';
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, index * 200 + 500);
-            });
-        }
-
-        // Animate when stats section comes into view
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateProgressBars();
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        });
-
-        const statsSection = document.querySelector('.stats-section');
-        if (statsSection) {
-            statsObserver.observe(statsSection);
-        }
-
-        // Random color animation for icons
-        setInterval(() => {
-            const icons = document.querySelectorAll('.dashboard-card i');
-            icons.forEach(icon => {
-                const colors = ['#4facfe', '#764ba2', '#43e97b', '#f093fb', '#f5576c', '#00f2fe', '#667eea', '#ff6b6b'];
-                const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                icon.style.color = randomColor;
-            });
-        }, 3000);
-
-        // Mobile menu toggle (if needed)
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        
-        if (mobileMenuToggle) {
-            mobileMenuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
-        }
-
-        // Add loading animation to buttons
-        document.querySelectorAll('.glow-button').forEach(button => {
-            button.addEventListener('click', function(e) {
-                // Create ripple effect
-                const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                ripple.style.position = 'absolute';
-                ripple.style.borderRadius = '50%';
-                ripple.style.background = 'rgba(255, 255, 255, 0.3)';
-                ripple.style.transform = 'scale(0)';
-                ripple.style.animation = 'ripple 0.6s linear';
-                ripple.style.pointerEvents = 'none';
-                
-                this.style.position = 'relative';
-                this.style.overflow = 'hidden';
-                this.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-            });
-        });
-
-        // Add CSS for ripple animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
-</html>="opacity-80">ข้อมูลเกี่ยวกับตัวฉัน</p>
-                </div>
-            </a>
-            
-            <a href="#skills" class="dashboard-item">
-                <div class="dashboard-card card glass">
-                    <i class="fas fa-code" style="color: #764ba2;"></i>
-                    <h3 class="text-xl font-semibold mb-2">ทักษะ</h3>
-                    <p class="opacity-80">ความสามารถและความเชี่ยวชาญ</p>
-                </div>
-            </a>
-            
-            <a href="#portfolio" class="dashboard-item">
-                <div class="dashboard-card card glass">
-                    <i class="fas fa-briefcase" style="color: #43e97b;"></i>
-                    <h3 class="text-xl font-semibold mb-2">ผลงาน</h3>
-                    <p class="opacity-80">โปรเจกต์และผลงานที่ผ่านมา</p>
-                </div>
-            </a>
-            
-            <a href="#education" class="dashboard-item">
-                <div class="dashboard-card card glass">
-                    <i class="fas fa-graduation-cap" style="color: #f093fb;"></i>
-                    <h3 class="text-xl font-semibold mb-2">การศึกษา</h3>
-                    <p class="opacity-80">ประวัติการศึกษาและการอบรม</p>
-                </div>
-            </a>
-            
-            <a href="#experience" class="dashboard-item">
-                <div class="dashboard-card card glass">
-                    <i class="fas fa-history" style="color: #f5576c;"></i>
-                    <h3 class="text-xl font-semibold mb-2">ประสบการณ์</h3>
-                    <p class="opacity-80">ประวัติการทำงาน</p>
-                </div>
-            </a>
-            
-            <a href="#certificates" class="dashboard-item">
-                <div class="dashboard-card card glass">
-                    <i class="fas fa-certificate" style="color: #00f2fe;"></i>
-                    <h3 class="text-xl font-semibold mb-2">ใบรับรอง</h3>
-                    <p class="opacity-80">ใบรับรองและประกาศนียบัตร</p>
-                </div>
-            </a>
-            
-            <a href="#blog" class="dashboard-item">
-                <div class="dashboard-card card glass">
-                    <i class="fas fa-blog" style="color: #667eea;"></i>
-                    <h3 class="text-xl font-semibold mb-2">บทความ</h3>
-                    <p class="opacity-80">บทความและความคิดเห็น</p>
-                </div>
-            </a>
-            
-            <a href="#contact" class="dashboard-item">
-                <div class="dashboard-card card glass">
-                    <i class="fas fa-envelope" style="color: #ff6b6b;"></i>
-                    <h3 class="text-xl font-semibold mb-2">ติดต่อ</h3>
-                    <p class="opacity-80">ข้อมูลการติดต่อ</p>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section class="portfolio-section" id="portfolio">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold text-white mb-4">ผลงานเด่น</h2>
-            <p class="text-xl text-white opacity-80">โปรเจกต์ที่ฉันภูมิใจนำเสนอ</p>
-        </div>
-        
-        <div class="portfolio-grid">
-            <div class="portfolio-card card glass text-white">
-                <div class="portfolio-image" style="background: var(--gradient-3);">
-                    <i class="fas fa-laptop-code"></i>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-3">เว็บไซต์ Portfolio</h3>
-                    <p class="opacity-80 mb-4">การออกแบบและพัฒนาเว็บไซต์ Portfolio ส่วนตัวที่ทันสมัยและตอบสนอง</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-white bg-opacity-20 px-3 py-1 rounded-full">HTML</span>
-                        <span class="text-xs bg-white bg-opacity-20 px-3 py-1 rounded-full">CSS</span>
-                        <span class="text-xs bg-white bg-opacity-20 px-3 py-1 rounded-full">JavaScript</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="portfolio-card card glass text-white">
-                <div class="portfolio-image" style="background: var(--gradient-2);">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-3">แอปพลิเคชันจัดการงาน</h3>
-                    <p class="opacity-80 mb-4">แอปพลิเคชันจัดการงานและตารางเวลาที่ใช้งานง่ายและมีประสิทธิภาพ</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-white bg-opacity-20 px-3 py-1 rounded-full">React</span>
-                        <span class="text-xs bg-white bg-opacity-20 px-3 py-1 rounded-full">Firebase</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="portfolio-card card glass text-white">
-                <div class="portfolio-image" style="background: var(--gradient-4);">
-                    <i class="fas fa-store"></i>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-3">ระบบร้านค้าออนไลน์</h3>
-                    <p class
+</html>
