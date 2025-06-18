@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ผลงานของฉัน</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f8ff;
+      margin: 0;
+    }
+
+    header {
+      background-color: #007BFF;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .project {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+    }
+
+    .project img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .project .desc {
+      padding: 15px;
+    }
+
+    .project .desc h3 {
+      margin: 0;
+      color: #007BFF;
+    }
+
+    @media (max-width: 600px) {
+      .portfolio-grid {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ผลงานของฉัน</h1>
+  </header>
+
+  <div class="portfolio-grid">
+    <div class="project">
+      <img src="https://via.placeholder.com/400x160?text=ERP+Dashboard" alt="ผลงาน 1">
+      <div class="desc">
+        <h3>ระบบ ERP โรงพยาบาล</h3>
+        <p>ระบบบริหารจัดการบุคลากร, เวชภัณฑ์ และรายงาน HIS</p>
+      </div>
+    </div>
+
+    <div class="project">
+      <img src="https://via.placeholder.com/400x160?text=IoT+Smart+Clinic" alt="ผลงาน 2">
+      <div class="desc">
+        <h3>IoT Smart Clinic</h3>
+        <p>ควบคุมอุปกรณ์ผ่าน Dashboard สำหรับคลินิกอัจฉริยะ</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
