@@ -3,61 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ประวัติส่วนตัว</title>
+  <title>ประวัติส่วนตัว - นายธุวะชิต ไชยโย</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f0f8ff;
       margin: 0;
-      padding: 0;
-      color: #333;
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #fff;
+      backdrop-filter: blur(4px);
     }
 
-    header {
-      background-color: #007BFF;
-      color: white;
-      padding: 20px;
-      text-align: center;
+    .overlay {
+      background-color: rgba(0, 0, 50, 0.5);
+      min-height: 100vh;
+      padding: 30px 20px;
     }
 
     .container {
       max-width: 800px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
       margin: auto;
-      padding: 20px;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      color: #007BFF;
+      margin-bottom: 10px;
     }
 
     h2 {
-      color: #007BFF;
+      color: #0056b3;
+      margin-top: 30px;
     }
 
-    img {
-      max-width: 150px;
-      border-radius: 50%;
-      margin-bottom: 20px;
+    p {
+      line-height: 1.7;
+      font-size: 1.1em;
+      margin: 5px 0;
     }
 
     @media (max-width: 600px) {
       .container {
-        padding: 10px;
+        padding: 20px;
       }
 
-      img {
-        width: 100px;
+      h1 {
+        font-size: 1.5em;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>ประวัติส่วนตัว</h1>
-  </header>
+  <div class="overlay">
+    <div class="container">
+      <h1>ประวัติส่วนตัว</h1>
 
-  <div class="container">
-    <center><img src="https://via.placeholder.com/150" alt="Profile"></center>
-    <h2>ชื่อ: นายความปลอดภัย คุง (Safety Kung)</h2>
-    <p><strong>อาชีพ:</strong> นักพัฒนาเว็บไซต์ / ผู้เชี่ยวชาญระบบดิจิทัล</p>
-    <p><strong>ความเชี่ยวชาญ:</strong> HTML, CSS, JavaScript, Python, ระบบ ERP และ IoT</p>
-    <p><strong>เป้าหมาย:</strong> นำเทคโนโลยีดิจิทัลมาช่วยยกระดับการทำงานในโรงพยาบาลและหน่วยงานราชการ</p>
+      <p><strong>ชื่อ:</strong> นายธุวะชิต ไชยโย</p>
+      <p><strong>ชื่อเล่น:</strong> เซฟตี้</p>
+      <p><strong>เชื้อชาติ:</strong> ไทย &nbsp; <strong>สัญชาติ:</strong> ไทย &nbsp; <strong>ศาสนา:</strong> พุทธ &nbsp; <strong>สถานะภาพ:</strong> โสด</p>
+      <p><strong>วันเกิด:</strong> วันอังคาร ที่ 6 เดือน พฤศจิกายน พ.ศ. 2533 &nbsp; <strong>อายุ:</strong> 34 ปี</p>
+
+      <h2>ที่อยู่ปัจจุบัน</h2>
+      <p>บ้านเลขที่ 252 หมู่ 8 ตำบลมะอึ อำเภอธวัชบุรี จังหวัดร้อยเอ็ด</p>
+      <p><strong>โทร:</strong> 088-572-9680</p>
+      <p><strong>อีเมล:</strong> safetykung@gmail.com</p>
+
+      <h2>นิสัยและความสามารถ</h2>
+      <p><strong>นิสัยส่วนตัว:</strong> เรียบร้อย พูดน้อย น่ารัก</p>
+      <p><strong>ความสามารถพิเศษ:</strong> ดนตรี กีฬา คอมพิวเตอร์</p>
+      <p><strong>คติประจำใจ:</strong> โลภมาก มักได้หลาย</p>
+      <p><strong>งานอดิเรก:</strong> เล่นดนตรี ทำเว็บสำเร็จรูป ออกแบบป้าย</p>
+    </div>
   </div>
 </body>
 </html>
