@@ -1,85 +1,706 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ประวัติส่วนตัว - นายธุวะชิต ไชยโย</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-image: url('https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=1950&q=80');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: #fff;
-      backdrop-filter: blur(4px);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ประวัติส่วนตัว - นายธุวะชิต ไชยโย</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS (นำมาจากที่คุณให้มา) */
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
 
-    .overlay {
-      background-color: rgba(0, 0, 50, 0.5);
-      min-height: 100vh;
-      padding: 30px 20px;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .container {
-      max-width: 800px;
-      background: rgba(255, 255, 255, 0.9);
-      color: #333;
-      margin: auto;
-      border-radius: 10px;
-      padding: 30px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    }
+        body {
+            font-family: 'Prompt', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* เปลี่ยนพื้นหลัง body เพื่อให้เห็น background-image/after ได้ชัดเจน */
+            background: var(--light); /* หรือจะใช้ transparent ก็ได้หากอยากให้เห็นภาพพื้นหลังเต็มๆ */
+            color: var(--dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-    h1 {
-      color: #007BFF;
-      margin-bottom: 10px;
-    }
+        /* Full-screen blurred background image */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=1950&q=80'); /* เปลี่ยน URL รูปภาพถ้ามีรูปของตัวเอง */
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px); /* Adjust blur as needed */
+            z-index: -2; /* Ensure it's behind everything else */
+        }
 
-    h2 {
-      color: #0056b3;
-      margin-top: 30px;
-    }
+        /* Overlay with gradient for background */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.7) 0%, rgba(139, 92, 246, 0.7) 100%); /* Adjust transparency as needed */
+            z-index: -1; /* Above the image, below content */
+        }
 
-    p {
-      line-height: 1.7;
-      font-size: 1.1em;
-      margin: 5px 0;
-    }
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+        }
 
-    @media (max-width: 600px) {
-      .container {
-        padding: 20px;
-      }
+        .navbar {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
 
-      h1 {
-        font-size: 1.5em;
-      }
-    }
-  </style>
+        .navbar .brand {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            gap: 1.5rem;
+        }
+
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-links li a.active {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 100;
+        }
+
+        .hamburger span {
+            height: 3px;
+            width: 25px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 5px;
+        }
+
+        .profile-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            position: relative; /* Ensure sections are positioned relative to this container */
+            z-index: 1; /* Make sure profile content is above body::after */
+        }
+
+        .profile-header {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .profile-cover {
+            height: 200px;
+            background: linear-gradient(90deg, #4f46e5, #8b5cf6);
+            position: relative;
+        }
+
+        .profile-cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border: 5px solid white;
+            position: absolute;
+            bottom: -75px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            font-weight: bold;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-info {
+            background: white;
+            padding: 6rem 2rem 2rem;
+            border-radius: 0 0 1rem 1rem;
+            text-align: center;
+        }
+
+        .profile-name {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .profile-nickname {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .profile-section {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            border-radius: 6px 0 0 6px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title i {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-value {
+            font-size: 1.125rem;
+            font-weight: 500;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .personality-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            color: var(--primary-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            margin: 0.25rem;
+            font-size: 0.875rem;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            position: absolute;
+            top: -0.5rem;
+            left: 1rem;
+            font-size: 4rem;
+            color: rgba(139, 92, 246, 0.2);
+            font-family: serif;
+        }
+
+        .quote-text {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--dark);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hobby-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .hobby-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .back-to-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+                flex-direction: column;
+                width: 70%;
+                height: 100vh;
+                padding: 5rem 2rem 2rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            #menu-toggle:checked ~ .nav-links {
+                right: 0;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            #menu-toggle:checked ~ .hamburger span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            #menu-toggle:checked ~ .hamburger span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            #menu-toggle:checked ~ .hamburger span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+            
+            .profile-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="overlay">
-    <div class="container">
-      <h1>ประวัติส่วนตัว</h1>
+    <nav class="navbar">
+        <a href="index.html" class="brand">
+            <i class="fas fa-code text-white"></i>
+            Portfolio
+        </a>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <ul class="nav-links">
+            <li><a href="index.html">หน้าหลัก</a></li>
+            <li><a href="about.html" class="active">ประวัติส่วนตัว</a></li>
+            <li><a href="skills.html">ทักษะ</a></li>
+            <li><a href="portfolio.html">ผลงาน</a></li>
+            <li><a href="contact.html">ติดต่อ</a></li>
+        </ul>
+    </nav>
 
-      <p><strong>ชื่อ:</strong> นายธุวะชิต ไชยโย</p>
-      <p><strong>ชื่อเล่น:</strong> เซฟตี้</p>
-      <p><strong>เชื้อชาติ:</strong> ไทย &nbsp; <strong>สัญชาติ:</strong> ไทย &nbsp; <strong>ศาสนา:</strong> พุทธ &nbsp; <strong>สถานะภาพ:</strong> โสด</p>
-      <p><strong>วันเกิด:</strong> วันอังคาร ที่ 6 เดือน พฤศจิกายน พ.ศ. 2533 &nbsp; <strong>อายุ:</strong> 34 ปี</p>
+    <main class="profile-container">
+        <div class="profile-header glass">
+            <div class="profile-cover"></div>
+            <div class="profile-avatar floating">
+                <span>ธ</span>
+            </div>
+            <div class="profile-info">
+                <h1 class="profile-name">นายธุวะชิต ไชยโย</h1>
+                <p class="profile-nickname">เซฟตี้</p>
+                
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">34</div>
+                        <div class="stat-label">อายุ</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">ไทย</div>
+                        <div class="stat-label">เชื้อชาติ</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">พุทธ</div>
+                        <div class="stat-label">ศาสนา</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">โสด</div>
+                        <div class="stat-label">สถานะภาพ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-      <h2>ที่อยู่ปัจจุบัน</h2>
-      <p>บ้านเลขที่ 252 หมู่ 8 ตำบลมะอึ อำเภอธวัชบุรี จังหวัดร้อยเอ็ด</p>
-      <p><strong>โทร:</strong> 088-572-9680</p>
-      <p><strong>อีเมล:</strong> safetykung@gmail.com</p>
+        <div class="profile-section glass">
+            <h2 class="section-title">
+                <i class="fas fa-user-circle"></i> ข้อมูลส่วนตัว
+            </h2>
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">ชื่อ-นามสกุล</span>
+                    <span class="info-value">นายธุวะชิต ไชยโย</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">ชื่อเล่น</span>
+                    <span class="info-value">เซฟตี้</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">วันเกิด</span>
+                    <span class="info-value">6 พฤศจิกายน 2533</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">อายุ</span>
+                    <span class="info-value">34 ปี</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">เชื้อชาติ</span>
+                    <span class="info-value">ไทย</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">สัญชาติ</span>
+                    <span class="info-value">ไทย</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">ศาสนา</span>
+                    <span class="info-value">พุทธ</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">สถานะภาพ</span>
+                    <span class="info-value">โสด</span>
+                </div>
+            </div>
+        </div>
 
-      <h2>นิสัยและความสามารถ</h2>
-      <p><strong>นิสัยส่วนตัว:</strong> เรียบร้อย พูดน้อย น่ารัก</p>
-      <p><strong>ความสามารถพิเศษ:</strong> ดนตรี กีฬา คอมพิวเตอร์</p>
-      <p><strong>คติประจำใจ:</strong> โลภมาก มักได้หลาย</p>
-      <p><strong>งานอดิเรก:</strong> เล่นดนตรี ทำเว็บสำเร็จรูป ออกแบบป้าย</p>
-    </div>
-  </div>
+        <div class="profile-section glass">
+            <h2 class="section-title">
+                <i class="fas fa-map-marker-alt"></i> ที่อยู่ปัจจุบัน
+            </h2>
+            
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div>
+                    <div class="info-value">บ้านเลขที่ 252 หมู่ 8 ตำบลมะอึ อำเภอธวัชบุรี จังหวัดร้อยเอ็ด</div>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div>
+                    <div class="info-label">โทรศัพท์</div>
+                    <div class="info-value">088-572-9680</div>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                    <div class="info-label">อีเมล</div>
+                    <div class="info-value">safetykung@gmail.com</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-section glass">
+            <h2 class="section-title">
+                <i class="fas fa-heart"></i> นิสัยและความสามารถ
+            </h2>
+            
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold mb-3 text-gray-700">นิสัยส่วนตัว</h3>
+                <div>
+                    <span class="personality-tag">เรียบร้อย</span>
+                    <span class="personality-tag">พูดน้อย</span>
+                    <span class="personality-tag">น่ารัก</span>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold mb-3 text-gray-700">ความสามารถพิเศษ</h3>
+                <div>
+                    <span class="personality-tag">ดนตรี</span>
+                    <span class="personality-tag">กีฬา</span>
+                    <span class="personality-tag">คอมพิวเตอร์</span>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold mb-3 text-gray-700">คติประจำใจ</h3>
+                <div class="quote-box">
+                    <p class="quote-text">โลภมาก มักได้หลาย</p>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-lg font-semibold mb-3 text-gray-700">งานอดิเรก</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="hobby-item">
+                        <div class="hobby-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div>เล่นดนตรี</div>
+                    </div>
+                    <div class="hobby-item">
+                        <div class="hobby-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div>ทำเว็บสำเร็จรูป</div>
+                    </div>
+                    <div class="hobby-item">
+                        <div class="hobby-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div>ออกแบบป้าย</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-8">
+            <a href="index.html" class="back-to-home">
+                <i class="fas fa-arrow-left"></i> กลับหน้าหลัก
+            </a>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white py-10 mt-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-4">เกี่ยวกับ Portfolio</h3>
+                <p class="text-gray-400 text-sm">
+                    เว็บไซต์ Portfolio นี้สร้างขึ้นเพื่อนำเสนอประวัติส่วนตัว, ทักษะ, ผลงาน, และประสบการณ์ของฉัน.
+                    คุณสามารถสำรวจส่วนต่างๆ เพื่อเรียนรู้เพิ่มเติมเกี่ยวกับฉันได้.
+                </p>
+            </div>
+            
+            <div>
+                <h3 class="text-xl font-bold mb-4">เมนูลัด</h3>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">หน้าหลัก</a></li>
+                    <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">ประวัติส่วนตัว</a></li>
+                    <li><a href="skills.html" class="text-gray-400 hover:text-white transition-colors">ทักษะ</a></li>
+                    <li><a href="portfolio.html" class="text-gray-400 hover:text-white transition-colors">ผลงาน</a></li>
+                    <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">ติดต่อ</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="text-xl font-bold mb-4">ติดต่อ</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-start space-x-3">
+                        <i class="fas fa-map-marker-alt text-gray-400 mt-1"></i>
+                        <span class="text-gray-400">กรุงเทพมหานคร, ประเทศไทย</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <i class="fas fa-envelope text-gray-400 mt-1"></i>
+                        <span class="text-gray-400">contact@example.com</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <i class="fas fa-phone text-gray-400 mt-1"></i>
+                        <span class="text-gray-400">+66 12 345 6789</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500">
+            <p>&copy; 2023 นายธุวะชิต ไชยโย. สงวนลิขสิทธิ์ทั้งหมด.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar toggle for mobile
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+
+            if (menuToggle && navLinks && hamburger) {
+                hamburger.addEventListener('click', () => {
+                    menuToggle.checked = !menuToggle.checked;
+                });
+
+                // Close nav menu when a link is clicked (for mobile)
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (window.innerWidth <= 768) {
+                            menuToggle.checked = false;
+                        }
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
